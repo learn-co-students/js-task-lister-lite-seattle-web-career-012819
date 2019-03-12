@@ -4,23 +4,31 @@ const tasks = document.getElementById('tasks');
 
 eventButton.addEventListener('click', () => {
   const userInput = input.value
-  const node = document.createElement('li');
+  const liNode = document.createElement('li');
   const textNode = document.createTextNode(userInput);
-  node.appendChild(textNode);
+  liNode.appendChild(textNode);
   const tasks = document.getElementById("tasks");
-  tasks.appendChild(node);
+  tasks.appendChild(liNode);
   const deleteButton = document.createElement('button');
-  node.appendChild(deleteButton);
+  liNode.appendChild(deleteButton);
   deleteButton.addEventListener('click', () => {
-    tasks.removeChild(node)
+    tasks.removeChild(liNode)
   });
   const setPriority = document.getElementById('priority');
   const selectedContent = setPriority.selectedIndex;
-  node.setAttribute("class", setPriority[selectedContent].value);
+  liNode.setAttribute("class", setPriority[selectedContent].value);
   
 });
 
+const priorityButton = document.getElementById('prioritize');
+priorityButton.addEventListener('click', () => {
+  const priorityDropDown = document.getElementById('priority');
+  const selectedPriority = priorityDropDown.selectedIndex;
+  if (selectedPriority) === 0) {
+    //pop up to the top
+  }
 
+}); 
 
 
 
