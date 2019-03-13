@@ -1,35 +1,40 @@
-const input = document.getElementById('new-task-description');
-const eventButton = document.getElementById('submit-button');
-const tasks = document.getElementById('tasks');
+const textInput = document.getElementById('new-task-description');
+const submitButton = document.getElementById('submit-button');
+const tasksList = document.getElementById('tasks');
+const prioritySelector = document.getElementById('priority');
 
-eventButton.addEventListener('click', () => {
-  const userInput = input.value
-  const liNode = document.createElement('li');
-  const textNode = document.createTextNode(userInput);
-  liNode.appendChild(textNode);
-  const tasks = document.getElementById("tasks");
-  tasks.appendChild(liNode);
+submitButton.addEventListener('click', function() {
+  //add listItem
+  const listItem = document.createElement('li');
+  const toDoInput = textInput.value;
+  const listItemContent = listItem.innerHTML = toDoInput;
+  tasksList.appendChild(listItem);
+
+  //add delete button to each listItem
   const deleteButton = document.createElement('button');
-  liNode.appendChild(deleteButton);
-  deleteButton.addEventListener('click', () => {
-    tasks.removeChild(liNode)
+  deleteButton.setAttribute('id', 'delete');
+  listItem.appendChild(deleteButton);
+
+  deleteButton.addEventListener('click', function() {
+    listItem.remove();
   });
-  const setPriority = document.getElementById('priority');
-  const selectedContent = setPriority.selectedIndex;
-  liNode.setAttribute("class", setPriority[selectedContent].value);
-  
+
+  const selectedContent = prioritySelector.selectedIndex;
+  listItem.setAttribute('class', prioritySelector[selectedContent].value);
+
 });
 
-const priorityButton = document.getElementById('prioritize');
-priorityButton.addEventListener('click', () => {
-  const priorityDropDown = document.getElementById('priority');
-  const selectedPriority = priorityDropDown.selectedIndex;
-  if (selectedPriority) === 0) {
-    //pop up to the top
-  }
 
-}); 
-
+// prioritySelector.addEventListener('click', function() {
+//   const prioritySelectorValue = prioritySelector.value;
+//   if (prioritySelectorValue === 0) {
+//     listItem.style.color = red;
+//   } else if (prioritySelectorValue === 1) {
+//     listItem.style.color = yellow;
+//   } else {
+//     listItem.style.color = green;
+//   }
+// });
 
 
 
